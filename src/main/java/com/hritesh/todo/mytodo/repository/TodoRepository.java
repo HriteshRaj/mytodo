@@ -4,8 +4,11 @@ package com.hritesh.todo.mytodo.repository;
 import com.hritesh.todo.mytodo.model.Todo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class TodoRepository {
@@ -19,6 +22,11 @@ public class TodoRepository {
 
 
 
+    }
+
+    public List<Todo> getAllTodo(){
+        TypedQuery<Todo> typedQuery = entityManager.createQuery("from Todo",Todo.class);
+        return typedQuery.getResultList();
     }
 
 

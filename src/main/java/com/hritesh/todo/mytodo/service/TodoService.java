@@ -5,6 +5,8 @@ import com.hritesh.todo.mytodo.model.Todo;
 import com.hritesh.todo.mytodo.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoService {
 
@@ -17,6 +19,12 @@ public class TodoService {
         todoRepository.create(todo);
 
     }
+
+    public List<Todo> getAllTodo(){
+        return todoRepository.getAllTodo();
+    }
+
+
 
 
 
