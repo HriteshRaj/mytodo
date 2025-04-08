@@ -17,6 +17,23 @@
 
 <div th:each="todo : ${todoList}">
     <p th:text="${todo.title}"></p>
+
+
+
+        <form th:action="@{/updatetodo/{id}(id=${todo.id})}" method="post">
+
+            <input type="text" th:value="${todo.title}" name="title" required>
+
+
+
+
+        <button type="submit" class="btn btn-warning btn-sm">Update</button>
+
+
+    </form>
+
+
+
 </div>
 
 

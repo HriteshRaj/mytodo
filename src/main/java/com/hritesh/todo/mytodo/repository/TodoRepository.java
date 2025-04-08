@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class TodoRepository {
@@ -29,6 +30,16 @@ public class TodoRepository {
         return typedQuery.getResultList();
     }
 
+    @Transactional
+    public void updateTodo(Todo todo){
+        entityManager.merge(todo);
+    }
+
+    public Optional<Todo> findTodoById(Long id){
+
+        Todo todo = entityManager.find(Todo.class,id);
+        return Optional.ofNullable(todo);
+    }
 
 
 
