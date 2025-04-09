@@ -41,8 +41,14 @@ public class TodoRepository {
         return Optional.ofNullable(todo);
     }
 
+    @Transactional
+    public void deleteTodo(Long id) {
+        Todo todo = entityManager.find(Todo.class,id);
+        if(todo!=null){
+            entityManager.remove(todo);
+        }
 
 
 
-
+    }
 }
